@@ -1,13 +1,22 @@
 import React from 'react'
 import './Search.scss'
+import { Suggestions } from '../Suggestions/Suggestions'
 
-export const Search = () => {
-
+export const Search = ({
+    searchText,
+    searchHandler,
+    skuList,
+}) => {
+    console.log("skuList",skuList)
     return (
         <div className="search">
             <input
-                placeholder="Type to search for a service">
+                type="text"
+                placeholder="Type to search for a service"
+                onChange={searchHandler}
+            >
             </input>
+            <Suggestions skuList={skuList}/>
         </div>
     )
 }
