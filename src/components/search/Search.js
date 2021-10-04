@@ -6,8 +6,9 @@ export const Search = ({
     searchText,
     searchHandler,
     skuList,
+    skuDetailsHandler,
+    suggestionSelectHandler,
 }) => {
-    console.log("skuList",skuList)
     return (
         <div className="search">
             <input
@@ -16,7 +17,13 @@ export const Search = ({
                 onChange={searchHandler}
             >
             </input>
-            <Suggestions skuList={skuList}/>
+            <Suggestions 
+                skuList={skuList}
+                suggestionSelectHandler={suggestionSelectHandler}
+                searchText={searchText}
+                searchHandler={searchHandler}
+                skuDetailsHandler={skuDetailsHandler}
+            />
         </div>
     )
 }
