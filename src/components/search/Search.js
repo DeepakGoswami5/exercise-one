@@ -3,6 +3,7 @@ import './Search.scss'
 import { Suggestions } from '../Suggestions/Suggestions'
 
 export const Search = ({
+    loading,
     searchText,
     searchHandler,
     skuList,
@@ -23,6 +24,7 @@ export const Search = ({
                 searchText={searchText}
                 searchHandler={searchHandler}
                 skuDetailsHandler={skuDetailsHandler}
+                loading={loading}
             />
         </div>
     )

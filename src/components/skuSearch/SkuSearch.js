@@ -10,6 +10,7 @@ export const SkuSearch = () => {
         cursor: 0,
     });
     const [currentSKU, setCurrentSKU] = useState({});
+    const [loading, setLoading] = useState(false);
 
     const searchHandler = (e) => {
         setSearchText(e.target.value);
@@ -17,12 +18,14 @@ export const SkuSearch = () => {
     };
 
     const getData = async (value) => {
+        setLoading(true);
         const data = await api.getSkuName(value)
         const { sku } = data
         setSkuList({
             ...skuList,
             list:sku,
         })
+        setLoading(false);
     }
 
     const suggestionSelectHandler = (value) => {
@@ -47,6 +50,7 @@ export const SkuSearch = () => {
                 skuList={skuList}
                 skuDetailsHandler={skuDetailsHandler}
                 suggestionSelectHandler={suggestionSelectHandler}
+                loading={loading}
             >
             </Search>
             <SkuDetails currentSKU={currentSKU} />

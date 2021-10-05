@@ -3,6 +3,7 @@ import { Loader } from "../loader/Loader";
 import "./suggestions.scss";
 
 export const Suggestions = ({skuList,search,suggestionSelectHandler,loading,skuDetailsHandler}) => {
+  console.log("loading",loading)
   return loading ? (
     <Loader />
     ) : (
