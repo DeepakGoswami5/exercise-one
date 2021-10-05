@@ -8,16 +8,16 @@ export const Suggestions = ({skuList,search,suggestionSelectHandler,loading,skuD
     ) : (
     <ul className="suggestions">
       {skuList.list? 
-          skuList.list.map(({ skuId, skuName }, index) => (
+          skuList.list.map(({ sku_id, sku_name }, index) => (
             <li
-              key={skuId}
+              key={sku_id}
               onClick={() => {
-                suggestionSelectHandler(skuName);
+                suggestionSelectHandler(sku_name);
                 skuDetailsHandler(index);
               }}
               className={`${skuList.cursor === index ? "active" : ""}`}
             >
-              {skuName}
+              {sku_name}
             </li>
           ))
         : !search && <p>Not Found..!</p>}

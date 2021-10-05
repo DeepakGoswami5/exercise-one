@@ -3,14 +3,14 @@
     max-height: 200px;
     height: 100%;
     overflow-y: auto;
-    color: white !important;
+    color: grey;
     li {
       padding: 5px 10px;
-      font-size: 14px;
+      font-size: 20px;
       cursor: pointer;
-      color: white !important;
-      &:hover, &:focus, &:active {
-        background-color: white !important;
+      color: white;
+      &:hover, &:focus{
+        background-color: blueviolet;
       }
     }
     p {

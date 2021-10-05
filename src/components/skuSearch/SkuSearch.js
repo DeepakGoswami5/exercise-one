@@ -9,7 +9,7 @@ export const SkuSearch = () => {
         list: [],
         cursor: 0,
     });
-    const [currentSKU, setCurrentSKU] = useState(null);
+    const [currentSKU, setCurrentSKU] = useState({});
 
     const searchHandler = (e) => {
         setSearchText(e.target.value);
@@ -34,7 +34,9 @@ export const SkuSearch = () => {
     
     const skuDetailsHandler = (index) => {
         console.log("index: ", index, skuList.list[index]);
-        setCurrentSKU(skuList.list[index]);
+        if(skuList.list[index]){
+            setCurrentSKU(skuList.list[index]);
+        }
     };
 
     return (
