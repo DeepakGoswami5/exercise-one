@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { Search } from "../search/Search"
 import api from "../../api/index"
 import { SkuDetails } from "../skuDetails/SkuDetails"
+import './skuSearch.scss'
 
 export const SkuSearch = () => {
     const [searchText, setSearchText] = useState("");
@@ -20,12 +21,16 @@ export const SkuSearch = () => {
     const getData = async (value) => {
         setLoading(true);
         const data = await api.getSkuName(value)
-        const { sku } = data
-        setSkuList({
-            ...skuList,
-            list:sku,
-        })
-        setLoading(false);
+        if(data){
+            const { sku } = data
+            setSkuList({
+                ...skuList,
+                list:sku,
+            })
+            setLoading(false);
+        }else{
+            alert("Internal Server Error")
+        }
     }
 
     const suggestionSelectHandler = (value) => {
@@ -36,11 +41,11 @@ export const SkuSearch = () => {
       };
     
     const skuDetailsHandler = (index) => {
-        console.log("index: ", index, skuList.list[index]);
         if(skuList.list[index]){
             setCurrentSKU(skuList.list[index]);
         }
     };
+    
 
     return (
         <div className="wrapper">
@@ -51,6 +56,8 @@ export const SkuSearch = () => {
                 skuDetailsHandler={skuDetailsHandler}
                 suggestionSelectHandler={suggestionSelectHandler}
                 loading={loading}
+                setSkuList={setSkuList}
+                setSearchText={setSearchText}
             >
             </Search>
             <SkuDetails currentSKU={currentSKU} />

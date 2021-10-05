@@ -15,7 +15,7 @@ export const SkuDetails = ({currentSKU}) => {
                     <li>Stock Available : {currentSKU.stock_available}</li>
                     <li>Barcode : {currentSKU.barcode}</li>
                 </ul>)
-                : (<p>No Details Available</p>)
+                : ("")
             }
         </div>
     )
